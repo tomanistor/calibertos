@@ -1,6 +1,6 @@
 module.exports = {
   // This is the "main" file which should include all other modules
-  entry: './src/main.js',
+  entry: './static/scripts/main.js',
   // Compiled output file
   output: {
     filename: 'bundle.js'
