@@ -1,0 +1,34 @@
+{
+  "name": "calibertos",
+  "version": "1.0.0",
+  "description": "The burrito authority",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tomanistor/calibertos.git"
+  },
+  "keywords": [
+    "burrito",
+    "burritos"
+  ],
+  "author": "Toma Nistor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomanistor/calibertos/issues"
+  },
+  "homepage": "https://github.com/tomanistor/calibertos#readme",
+  "dependencies": {
+    "hapi": "^16.6.2",
+    "vue": "^2.4.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.8.0",
+    "webpack": "^3.6.0"
+  }
+}
