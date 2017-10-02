@@ -4,7 +4,7 @@
   "description": "The burrito authority",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,13 @@
     "url": "https://github.com/tomanistor/calibertos/issues"
   },
   "homepage": "https://github.com/tomanistor/calibertos#readme",
+  "babel": {
+    "presets": "env"
+  },
   "dependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-runtime": "^6.26.0",
+    "file-loader": "^1.1.4",
     "hapi": "^16.6.2",
     "vue": "^2.4.4"
   },
@@ -29,8 +35,15 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
+    "css-loader": "^0.28.7",
     "eslint": "^4.8.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
     "vue-axios": "^2.0.2",
+    "vue-loader": "^13.0.5",
+    "vue-router": "^2.7.0",
+    "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
   }
