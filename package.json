@@ -4,7 +4,8 @@
   "description": "The burrito authority",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --output-public-path=/build/"
+    "dev": "webpack-dev-server",
+    "prod": "webpack -p"
   },
   "repository": {
     "type": "git",

@@ -10,5 +10,10 @@
 </script>
 
 <style lang="scss">
-  @import '../styles/scss/layout.scss'
+  body{
+    .container {
+      display: grid;
+    }
+    color: blue;
+  }
 </style>

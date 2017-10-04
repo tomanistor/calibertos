@@ -1,11 +1,12 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-const path = require('path')
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: ['./static/scripts/main.js'],
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/build'
   },
   resolve: {
     alias: {
@@ -27,10 +28,16 @@ module.exports = {
       {
         test: /\.vue$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          extractCSS: true
+        }
       }
     ]
   },
+  plugins: [
+    new ExtractTextPlugin('style.css')
+  ],
   devServer: {
     port: 3000
   }
