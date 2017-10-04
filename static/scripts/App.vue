@@ -8,3 +8,7 @@
   export default {
   }
 </script>
+
+<style lang="scss">
+  @import '../styles/scss/layout.scss'
+</style>
