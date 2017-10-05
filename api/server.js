@@ -1,4 +1,13 @@
-const Hapi = require('hapi')
+const Hapi = require('hapi');
+const mongoose = require('mongoose');
+
+mongoose.Promise = global.Promise
+mongoose.connect('mongodb://localhost/calibertos-dev', {
+  useMongoClient: true
+})
+  .then(() => console.log('Connection Successful'))
+  .catch((err) => console.error(err))
+
 
 const server = new Hapi.Server();
 server.connection({
