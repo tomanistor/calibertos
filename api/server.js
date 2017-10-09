@@ -1,6 +1,7 @@
 const Hapi = require('hapi');
 const mongoose = require('mongoose');
 
+/** DB START **/
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost/calibertos-dev', {
   useMongoClient: true
@@ -9,20 +10,27 @@ mongoose.connect('mongodb://localhost/calibertos-dev', {
   .catch((err) => console.error(err))
 
 
+/** INITIAL SERVER **/
 const server = new Hapi.Server();
 server.connection({
     host: 'localhost',
     port: 8000
 });
 
+/** ROUTES **/
 server.route({
     method: 'GET',
-    path: '/hello',
+    path: '/',
     handler: function(request, reply) {
-        return reply('hello world');
+        reply({'message': 'Hello World!'});
     }
 });
 
+const UserRoutes = require('./controllers/user');
+
+server.route(UserRoutes);
+
+/** SERVER START **/
 server.start((err) => {
         if (err) {
                 throw err;
