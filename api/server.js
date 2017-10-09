@@ -18,16 +18,13 @@ server.connection({
 });
 
 /** ROUTES **/
-server.route({
-    method: 'GET',
-    path: '/',
-    handler: function(request, reply) {
-        reply({'message': 'Hello World!'});
-    }
+// Root Routes
+server.route({ method: 'GET', path: '/',
+  handler: (request, reply) => { reply({'message': 'Hello World!'}); }
 });
 
-const UserRoutes = require('./controllers/user');
-
+// User Routes
+const UserRoutes = require('./controllers/users_controller');
 server.route(UserRoutes);
 
 /** SERVER START **/
