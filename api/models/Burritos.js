@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var LocationSchema = new Schema({
+var BurritoSchema = new Schema({
   brandId: [{ type: Schema.Types.ObjectId, ref: 'Brand' }],
   locationId: [{ type: Schema.Types.ObjectId, ref: 'Location' }],
   name: { type: String, default: 'California Burrito' },
@@ -21,4 +21,4 @@ var LocationSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Location', LocationSchema);
+module.exports = mongoose.model('Burrito', BurritoSchema);
