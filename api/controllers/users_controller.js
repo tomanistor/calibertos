@@ -14,7 +14,7 @@ module.exports = [
           console.error(err);
         }
 
-        reply(users);
+        reply(users);  
       });
     }
   },
