@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var BurritoSchema = new Schema({
-  brandId: [{ type: Schema.Types.ObjectId, ref: 'Brand' }],
-  locationId: [{ type: Schema.Types.ObjectId, ref: 'Location' }],
+  brandId: { type: Schema.Types.ObjectId, ref: 'Brand' },
+  locationId: { type: Schema.Types.ObjectId, ref: 'Location' },
   name: { type: String, default: 'California Burrito' },
   image: String,
   type: { type: String, default: 'California Burrito' },

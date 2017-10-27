@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var LocationSchema = new Schema({
-  brandId: [{ type: Schema.Types.ObjectId, ref: 'Brand' }]
+  brandId: { type: Schema.Types.ObjectId, ref: 'Brand' }
   lat: Number,
   lng: Number,
   address: {
