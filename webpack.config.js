@@ -28,52 +28,17 @@ module.exports = {
       loader: 'vue-loader',
       options: {
         loaders: {
-          // css: ExtractTextPlugin.extract({
-          //   use: 'css-loader',
-          //   fallback: 'vue-style-loader'
-          // }),
-          // scss: ExtractTextPlugin.extract({
-          //   use: ['css-loader', 'sass-loader?data=@import "./static/styles/scss/global.scss";'],
-          //   fallback: 'vue-style-loader'
-          // })
-          scss: ['css-loader', 'sass-loader?data=@import "./static/styles/scss/global.scss";']
-          // scss: ExtractTextPlugin.extract({
-          //   use: ['css-loader', {
-          //     loader: 'sass-loader',
-          //     options: {
-          //       data: '@import "./static/styles/scss/global.scss";'
-          //     }
-          //   }, 'postcss-loader'],
-          //   fallback: 'vue-style-loader'
-          // })
-          // scss: ExtractTextPlugin.extract({
-          //   use: ['css-loader', 'sass-loader', {
-          //     loader: 'sass-resources-loader',
-          //     options: {
-          //       resources: path.resolve(__dirname, './static/styles/scss/global.scss')
-          //     }
-          //   }],
-          //   fallback: 'vue-style-loader'
-          // }),
-          // sass: ExtractTextPlugin.extract({
-          //   use: ['css-loader', 'sass-loader?indentedSyntax', {
-          //     loader: 'sass-resources-loader',
-          //     options: {
-          //       resources: path.resolve(__dirname, './static/styles/scss/global.scss')
-          //     }
-          //   }],
-          //   fallback: 'vue-style-loader'
-          // })
+          scss: ExtractTextPlugin.extract({
+            use: ['css-loader', 'sass-loader', {
+              loader: 'sass-resources-loader',
+              options: {
+                resources: path.resolve(__dirname, './static/styles/scss/imports.scss')
+              }
+            }],
+            fallback: 'vue-style-loader'
+          })
         }
       }
-    },
-    {
-      test: /\.css$/,
-      use: [
-        'style-loader',
-        { loader: 'css-loader', options: { importLoaders: 1 } },
-        'postcss-loader'
-      ]
     }]
   },
   plugins: [
