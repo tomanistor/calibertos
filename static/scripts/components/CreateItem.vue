@@ -29,3 +29,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+body {
+  border: 2px $c-3 solid;
+}
+</style>

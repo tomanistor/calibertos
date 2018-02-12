@@ -1,4 +1,4 @@
-# calibertos
+# Calibertos
 
 # Run API Server
 In separate terminal windows run:
@@ -8,7 +8,7 @@ In separate terminal windows run:
 # API Documentation
 ```
 Request: `GET /users`
-Respone: 
+Respone:
 [
   {
     '_id': ObjectId,
@@ -35,7 +35,7 @@ Request: `POST /users`
   'name': String,
   'email': String
 }
-Response: 
+Response:
 {
   '_id': ObjectId
 }
@@ -48,25 +48,3 @@ Response:
   '_id': ObjectId
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,0 +1,22 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 1rem == 10px, 1.5rem == 15px, etc.
+}
+
+body {
+  line-height: 1.75;
+}
+
+// CSS clean reset
+* {
+  margin: 0;
+  padding: 0;
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+.container {
+  display: grid;
+}

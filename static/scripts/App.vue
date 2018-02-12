@@ -10,10 +10,9 @@
 </script>
 
 <style lang="scss">
-  body{
+  body {
     .container {
       display: grid;
     }
-    color: blue;
   }
 </style>
