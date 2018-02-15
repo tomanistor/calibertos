@@ -10,10 +10,6 @@
 </script>
 
 <style lang="scss">
-  body{
-    .container {
-      display: grid;
-    }
-    color: blue;
-  }
+  @import "../styles/scss/imports.scss";
+  @import "../styles/scss/global.scss";
 </style>
