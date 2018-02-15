@@ -1,9 +1,10 @@
 const Hapi = require('hapi');
 const mongoose = require('mongoose');
+let config = require('config');
 
 /** DB START **/
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/calibertos-dev', {
+mongoose.connect(config.DBHost, {
   useMongoClient: true
 })
   .then(() => console.log('Connection Successful'))
@@ -34,3 +35,5 @@ server.start((err) => {
         }
         console.log('Server running at: ', server.info.uri);
 })
+
+module.exports = server
