@@ -10,28 +10,32 @@
       <label>Price:</label>
       <input type="text" v-model="item.price">
       </div>
-      <button>Add Burrito</button>
+      <button @click="addItem">Add Burrito</button>
     </form>
+    <BurritoList></BurritoList>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      item: {}
-    }
-  },
-  methods: {
-    addItem() {
+  import BurritoList from './BurritoList.vue'
 
+  export default {
+    data() {
+      return {
+        item: {}
+      }
+    },
+    components: { BurritoList },
+    methods: {
+      addItem() {
+
+      }
     }
   }
-}
 </script>
 
 <style lang="scss">
-body {
-  border: 2px $c-3 solid;
-}
+  body {
+    border: 2px $c-3 solid;
+  }
 </style>

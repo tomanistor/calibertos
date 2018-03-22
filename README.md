@@ -5,6 +5,14 @@ In separate terminal windows run:
 - `mongod`
 - `npm start`
 
+# Webpack
+
+## Development Server
+- `npm run dev`
+
+## Production Server
+- `npm run prod`
+
 # API Documentation
 ```
 Request: `GET /users`

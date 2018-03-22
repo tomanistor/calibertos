@@ -8,13 +8,19 @@ import axios from 'axios'
 Vue.use(VueAxios, axios)
 
 import App from './App.vue'
-import CreateItem from './components/CreateItem.vue'
+import CreateBurrito from './components/CreateBurrito.vue'
+import BurritoList from './components/BurritoList.vue'
 
 const routes = [
   {
-    name: 'CreateItem',
+    name: 'CreateBurrito',
     path: '/',
-    component: CreateItem
+    component: CreateBurrito
+  },
+  {
+    name: 'BurritoList',
+    path: '/burritos',
+    component: BurritoList
   }
 ]
 
