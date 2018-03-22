@@ -45,6 +45,7 @@ module.exports = {
     new ExtractTextPlugin('style.css')
   ],
   devServer: {
-    port: 3000
+    port: 3000,
+    historyApiFallback: true
   }
 }

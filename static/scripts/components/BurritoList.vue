@@ -3,6 +3,7 @@
     <h1>List of Burritos</h1>
     <ul>
       <li>
+        <slot></slot>
       </li>
     </ul>
   </div>

@@ -10,9 +10,10 @@
       <label>Price:</label>
       <input type="text" v-model="item.price">
       </div>
-      <button @click="addItem">Add Burrito</button>
+      <button @click="addBurrito">Add Burrito</button>
     </form>
-    <BurritoList></BurritoList>
+    <BurritoList>
+    </BurritoList>
   </div>
 </template>
 
@@ -27,7 +28,7 @@
     },
     components: { BurritoList },
     methods: {
-      addItem() {
+      addBurrito() {
 
       }
     }
