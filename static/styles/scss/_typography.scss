@@ -2,6 +2,7 @@
 
 %f-header {
   font-family: "Cabin", sans-serif;
+  text-transform: uppercase;
 }
 
 %f-body {
@@ -30,3 +31,59 @@ a {
     color: $c-3;
   }
 }
+
+
+// Responsive modular scale
+// http://www.modularscale.com/?1.25&em&1.33&web&text
+$type-scale-large: (
+  h1: 3.318rem,
+  h2: 2.765rem,
+  h3: 2.304rem,
+  h4: 1.92rem,
+  p: 1.6rem
+);
+
+// http://www.modularscale.com/?1.25&em&1.25&web&text
+$type-scale-medium: (
+  h1: 2.798rem,
+  h2: 2.433rem,
+  h3: 2.116rem,
+  h4: 1.84rem,
+  p: 1.6rem
+);
+
+// http://www.modularscale.com/?1.1&em&1.25&web&text
+$type-scale-small: (
+  h1: 2.563rem,
+  h2: 2.278rem,
+  h3: 2.025rem,
+  h4: 1.8rem,
+  p: 1.6rem
+);
+
+// Moduler scale breakpoints
+$breakpoint-medium: 75em;
+$breakpoint-small: 45em;
+
+@mixin size($level) {
+  font-size: map-get($type-scale-large, $level);
+  @media (max-width: $breakpoint-medium) {
+    font-size: map-get($type-scale-medium, $level);
+  }
+  @media (max-width: $breakpoint-small) {
+    font-size: map-get($type-scale-small, $level);
+  }
+}
+
+// Apply modular scale
+h1 { @include size(h1); }
+h2 { @include size(h2); }
+h3 { @include size(h3); }
+h4 { @include size(h4); }
+a,
+p,
+input,
+label,
+li,
+span
+{ @include size(p); }
