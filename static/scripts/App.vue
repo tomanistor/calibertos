@@ -1,8 +1,8 @@
 <template>
   <div class="container">
+    <header></header>
     <router-view></router-view>
-    <router-link to="/" exact>Home</router-link>
-    <router-link to="/burritos">Burritos</router-link>
+    <router-link to="/" exact>Home</router-link><router-link to="/burritos">Burritos</router-link>
   </div>
 </template>
 

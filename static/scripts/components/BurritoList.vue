@@ -2,8 +2,9 @@
   <div>
     <h1>List of Burritos</h1>
     <ul>
-      <li>
-        <slot></slot>
+      <li v-for="burrito in burritos">
+        <span>{{ burrito.name }}</span>
+        <span>{{ burrito.price }}</span>
       </li>
     </ul>
   </div>
@@ -11,10 +12,23 @@
 
 <script>
   export default {
-    name: 'burritolist',
+    name: 'burrito-list',
+    props: ['burritos'],
     data() {
       return {
       }
+    },
+    methods: {
+      createBurrito() {
+        this.$emit('burrito-created')
+        console.log('adding burrito to list')
+      }
+    },
+    created() {
+      console.log(this.burritos)
+    },
+    mounted() {
+      console.log(this.burritos)
     }
   }
 </script>
