@@ -18,17 +18,11 @@
       return {
       }
     },
-    methods: {
-      createBurrito() {
-        this.$emit('burrito-created')
-        console.log('adding burrito to list')
-      }
-    },
     created() {
       console.log(this.burritos)
     },
     mounted() {
-      console.log(this.burritos)
+      console.log(this.$route)
     }
   }
 </script>

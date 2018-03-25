@@ -4,11 +4,11 @@
     <form>
       <div>
         <label>Name</label>
-        <input type="text" v-model="newBurrito.name">
+        <input type="text" v-model.trim="newBurrito.name">
       </div>
       <div>
         <label>Price</label>
-        <input type="text" v-model="newBurrito.price" v-on:keypress="isNumber()" maxlength="5">
+        <input type="text" v-model.trim="newBurrito.price" v-on:keypress="isNumber()" maxlength="5">
       </div>
       <input type="button" @click="createBurrito()" value="Add Burrito">
       <input type="button" @click="destroyBurrito()" value="Clear">
@@ -23,27 +23,27 @@
   export default {
     name: 'create-burrito',
     components: { BurritoList },
-    props: ['newBurrito.price'],
+    props: ['burritos'],
     data() {
       return {
         newBurrito: {
           name: '',
           price: ''
-        },
-        burritos: [
-          {
-            name: "California Burrito",
-            price: 4.95
-          },
-          {
-            name: "Carnitas Burrito",
-            price: 5.45
-          },
-          {
-            name: "Baja Fish Burrito",
-            price: 6.95
-          }
-        ]
+        }
+        // burritos: [
+        //   {
+        //     name: "California Burrito",
+        //     price: 4.95
+        //   },
+        //   {
+        //     name: "Carnitas Burrito",
+        //     price: 5.45
+        //   },
+        //   {
+        //     name: "Baja Fish Burrito",
+        //     price: 6.95
+        //   }
+        // ]
       }
     },
     methods: {
@@ -61,7 +61,7 @@
         if (burrito.name.length >= 1 && burrito.price.length >= 1) {
           // Place new burrito in burritos array
           this.burritos.push({
-            name: burrito.name.trim(),
+            name: burrito.name,
             price: burrito.price
           })
           // Reset burrito inputs to empty strings
@@ -78,7 +78,5 @@
 </script>
 
 <style lang="scss">
-  body {
-    border: 2px $c-3 solid;
-  }
+
 </style>
