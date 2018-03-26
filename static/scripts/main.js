@@ -1,13 +1,20 @@
 import Vue from 'vue'
 
+// Routing
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+// Async HTTP requests
 import VueAxios from 'vue-axios'
 import axios from 'axios'
 Vue.use(VueAxios, axios)
 
+// User Authorization
+import auth0 from 'auth0-js'
+
+// Vue components
 import App from './App.vue'
+import Callback from './components/Callback.vue'
 import CreateBurrito from './components/CreateBurrito.vue'
 import BurritoList from './components/BurritoList.vue'
 
@@ -29,6 +36,11 @@ const burritos = {
 }
 
 const routes = [
+  {
+    name: 'Callback',
+    path: '/callback',
+    component: Callback
+  },
   {
     name: 'CreateBurrito',
     path: '/',
