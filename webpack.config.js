@@ -1,8 +1,9 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+require('babel-polyfill');
 
 module.exports = {
-  entry: ['./static/scripts/main.js'],
+  entry: ['babel-polyfill', './static/scripts/main.js'],
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
@@ -19,7 +20,7 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel-loader',
       options: {
-        presets: ['env']
+        presets: ["env"]
       }
     },
     {

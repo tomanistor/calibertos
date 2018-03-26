@@ -1,12 +1,24 @@
 import Vue from 'vue'
 
+// Routing
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+// Async HTTP Requests
 import VueAxios from 'vue-axios'
 import axios from 'axios'
 Vue.use(VueAxios, axios)
 
+// User Authentication
+import Auth from '@okta/okta-vue'
+Vue.use(Auth, {
+  issuer: 'https://dev-375168.oktapreview.com/oauth2/default',
+  client_id: '0oaeg91o03tks3eIF0h7',
+  redirect_uri: 'http://localhost:3000/implicit/callback',
+  scope: 'openid profile email'
+})
+
+// Vue Components
 import App from './App.vue'
 import CreateBurrito from './components/CreateBurrito.vue'
 import BurritoList from './components/BurritoList.vue'
@@ -36,6 +48,10 @@ const routes = [
     props: burritos
   },
   {
+    path: '/implicit/callback',
+    component: Auth.handleCallback()
+  },
+  {
     name: 'BurritoList',
     path: '/burritos',
     component: BurritoList,
@@ -44,4 +60,8 @@ const routes = [
 ]
 
 const router = new VueRouter({ mode: 'history', routes: routes })
+
+// Check authentications on each route
+router.beforeEach(Vue.prototype.$auth.authRedirectGuard())
+
 new Vue(Vue.util.extend({ router }, App)).$mount('#app')
