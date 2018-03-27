@@ -1,13 +1,17 @@
 import Vue from 'vue'
 
+// Routing
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+// Async HTTP requests
 import VueAxios from 'vue-axios'
 import axios from 'axios'
 Vue.use(VueAxios, axios)
 
+// Vue components
 import App from './App.vue'
+import Callback from './components/Callback.vue'
 import CreateBurrito from './components/CreateBurrito.vue'
 import BurritoList from './components/BurritoList.vue'
 
@@ -30,14 +34,19 @@ const burritos = {
 
 const routes = [
   {
-    name: 'CreateBurrito',
     path: '/',
+    name: 'home',
     component: CreateBurrito,
     props: burritos
   },
   {
-    name: 'BurritoList',
+    path: '/callback',
+    name: 'callback',
+    component: Callback
+  },
+  {
     path: '/burritos',
+    name: 'burrito-list',
     component: BurritoList,
     props: burritos
   }
@@ -45,3 +54,5 @@ const routes = [
 
 const router = new VueRouter({ mode: 'history', routes: routes })
 new Vue(Vue.util.extend({ router }, App)).$mount('#app')
+
+export default router

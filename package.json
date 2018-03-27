@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "prod": "webpack -p",
+    "prod": "webpack --config webpack.config.js",
     "start": "nodemon ./api/server.js",
     "test": "mocha --recursive --exit api/tests"
   },
@@ -23,14 +23,10 @@
     "url": "https://github.com/tomanistor/calibertos/issues"
   },
   "homepage": "https://github.com/tomanistor/calibertos#readme",
-  "babel": {
-    "presets": "env"
-  },
   "dependencies": {
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-runtime": "^6.26.0",
+    "EventEmitter": "^1.0.0",
+    "auth0-js": "^9.4.1",
     "config": "^1.27.0",
-    "file-loader": "^1.1.4",
     "hapi": "^16.6.2",
     "vue": "^2.4.4"
   },
@@ -38,18 +34,24 @@
     "axios": "^0.16.2",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
+    "babel-runtime": "^6.26.0",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "css-loader": "^0.28.7",
     "eslint": "^4.8.0",
     "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.4",
     "mocha": "^4.0.1",
     "mongoose": "^4.12.0",
     "node-sass": "^4.5.3",
     "nodemon": "^1.12.1",
     "sass-loader": "^6.0.6",
     "sass-resources-loader": "^1.3.2",
+    "svg-inline-loader": "^0.8.0",
+    "uglifyjs-webpack-plugin": "^1.2.4",
     "vue-axios": "^2.0.2",
     "vue-loader": "^13.0.5",
     "vue-router": "^2.7.0",
