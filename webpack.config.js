@@ -1,5 +1,6 @@
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: ['./static/scripts/main.js'],
@@ -10,17 +11,15 @@ module.exports = {
   },
   resolve: {
     alias: {
-      vue: 'vue/dist/vue.js'
-    }
+      'vue$': 'vue/dist/vue.esm.js'
+    },
+    extensions: ['*', '.js', '.vue', '.json']
   },
   module: {
     loaders: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel-loader',
-      options: {
-        presets: ['env']
-      }
+      loader: 'babel-loader'
     },
     {
       test: /\.vue$/,
@@ -39,10 +38,28 @@ module.exports = {
           })
         }
       }
+    },
+    {
+      test: /\.(png|jpg|gif|svg)$/,
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]?[hash]'
+      }
+    },
+    {
+      test: /\.svg$/,
+      loader: 'svg-inline-loader'
     }]
   },
   plugins: [
-    new ExtractTextPlugin('style.css')
+    new ExtractTextPlugin('style.css'),
+    new UglifyJsPlugin({
+      test: /\.js($|\?)/i,
+      sourceMap: true,
+      uglifyOptions: {
+        compress: true,
+      }
+    })
   ],
   devServer: {
     port: 3000,

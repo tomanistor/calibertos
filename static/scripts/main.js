@@ -9,9 +9,6 @@ import VueAxios from 'vue-axios'
 import axios from 'axios'
 Vue.use(VueAxios, axios)
 
-// User Authorization
-import auth0 from 'auth0-js'
-
 // Vue components
 import App from './App.vue'
 import Callback from './components/Callback.vue'
@@ -37,19 +34,19 @@ const burritos = {
 
 const routes = [
   {
-    name: 'Callback',
-    path: '/callback',
-    component: Callback
-  },
-  {
-    name: 'CreateBurrito',
     path: '/',
+    name: 'home',
     component: CreateBurrito,
     props: burritos
   },
   {
-    name: 'BurritoList',
+    path: '/callback',
+    name: 'callback',
+    component: Callback
+  },
+  {
     path: '/burritos',
+    name: 'burrito-list',
     component: BurritoList,
     props: burritos
   }
@@ -57,3 +54,5 @@ const routes = [
 
 const router = new VueRouter({ mode: 'history', routes: routes })
 new Vue(Vue.util.extend({ router }, App)).$mount('#app')
+
+export default router
