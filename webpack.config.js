@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -51,6 +52,7 @@ module.exports = {
       loader: 'svg-inline-loader'
     }]
   },
+  devtool: 'source-map',
   plugins: [
     new ExtractTextPlugin('style.css'),
     new UglifyJsPlugin({
@@ -59,10 +61,14 @@ module.exports = {
       uglifyOptions: {
         compress: true,
       }
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ],
   devServer: {
     port: 3000,
+    compress: true,
     historyApiFallback: true
   }
 }
