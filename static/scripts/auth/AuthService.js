@@ -6,6 +6,7 @@ export default class AuthService {
 
   authenticated = this.isAuthenticated()
   authNotifier = new EventEmitter()
+  userProfile
 
   constructor() {
     this.login = this.login.bind(this)
@@ -20,7 +21,7 @@ export default class AuthService {
     redirectUri: 'http://localhost:3000/callback',
     audience: 'https://tomanistor.auth0.com/userinfo',
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid profile'
   })
 
   login() {
@@ -66,5 +67,26 @@ export default class AuthService {
     // Access Token's expiry time
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'))
     return new Date().getTime() < expiresAt
+  }
+
+  getProfile() {
+    if (!userProfile) {
+      const accessToken = localStorage.getItem('access_token')
+
+      if (!accessToken) {
+        console.log('Access Token must exist to fetch profile')
+      }
+
+      this.auth0.client.userInfo(accessToken, function(err, profile) {
+        if (profile) {
+          userProfile = profile
+          // displayProfile()
+          console.log(userProfile)
+        }
+      });
+    } else {
+      console.log(userProfile)
+      // displayProfile()
+    }
   }
 }

@@ -1,9 +1,11 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; // 1rem == 10px, 1.5rem == 15px, etc.
+  height: 100%;
 }
 
 body {
+  height: 100%;
   line-height: 1.75;
 }
 
@@ -17,6 +19,17 @@ body {
   }
 }
 
-.container {
+// Define 12 column grid
+.app-container {
   display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: "header header header"
+                       "main   main   main"
+                       "footer footer foot";
+}
+
+// Grid items take up entire width by default
+.app-container > * {
+  display: grid;
+  grid-column: span 12;
 }
