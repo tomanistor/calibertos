@@ -9,8 +9,8 @@
         </div>
         <div class="nav-right">
           <a href="#" v-if="!authenticated" @click="login">Log In</a>
+          <span v-if="authenticated">Hey there, {{ profile }}</span>
           <a href="#" v-if="authenticated" @click="logout">Log Out</a>
-          <span v-if="authenticated">Hey there, {{ username }}</span>
         </div>
       </nav>
     </header>
@@ -35,15 +35,20 @@
       return {
         auth,
         authenticated,
-        username: userProfile,
-        getuserinfo: console.log('auth0 scope: ' + auth.userProfile)
+        userProfile,
+        profile: userProfile
       }
+    },
+    created: function() {
+      auth.getProfile();
+      console.log(userProfile)
+      console.log(this.userProfile)
+      console.log(auth.userProfile)
+      console.log(this.auth.userProfile)
     },
     methods: {
       login,
-      logout,
-      getProfile,
-      userProfile
+      logout
     }
   }
 </script>

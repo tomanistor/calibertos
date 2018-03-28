@@ -13,6 +13,8 @@ export default class AuthService {
     this.setSession = this.setSession.bind(this)
     this.logout = this.logout.bind(this)
     this.isAuthenticated = this.isAuthenticated.bind(this)
+    this.userProfile
+    this.getProfile = this.getProfile.bind(this)
   }
 
   auth0 = new auth0.WebAuth({
@@ -32,6 +34,15 @@ export default class AuthService {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult)
+        this.getProfile()
+
+        // this.auth0.client.userInfo(authResult.accessToken, function (err, profile) {
+        //   localStorage.setItem('user_details', profile)
+        //   userProfile = profile
+        //   console.log(profile)
+        //   console.log(userProfile.name)
+        // })
+
         router.replace('/')
       } else if (err) {
         router.replace('/')
@@ -70,7 +81,7 @@ export default class AuthService {
   }
 
   getProfile() {
-    if (!userProfile) {
+    if (!this.userProfile) {
       const accessToken = localStorage.getItem('access_token')
 
       if (!accessToken) {
@@ -79,10 +90,10 @@ export default class AuthService {
 
       this.auth0.client.userInfo(accessToken, function(err, profile) {
         if (profile) {
-          userProfile = profile
-          // displayProfile()
-          console.log(userProfile)
+          self.userProfile = profile
         }
+        console.log(userProfile)
+        return userProfile
       });
     } else {
       console.log(userProfile)

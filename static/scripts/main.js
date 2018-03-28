@@ -55,4 +55,4 @@ const routes = [
 const router = new VueRouter({ mode: 'history', routes: routes })
 export default router
 
-const vm = new Vue(Vue.util.extend({ router }, App)).$mount('#app')
+window.vm = new Vue(Vue.util.extend({ router }, App)).$mount('#app')

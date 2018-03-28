@@ -17,12 +17,6 @@
     data() {
       return {
       }
-    },
-    created() {
-      console.log(this.burritos)
-    },
-    mounted() {
-      console.log(this.$route)
     }
   }
 </script>
