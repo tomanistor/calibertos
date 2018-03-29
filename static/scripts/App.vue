@@ -22,6 +22,7 @@
 
 <script>
   import AuthService from './auth/AuthService'
+  // const userProfile = AuthService.userProfile
 
   const auth = new AuthService()
   const { login, logout, authenticated, authNotifier, getProfile, userProfile } = auth
@@ -35,16 +36,26 @@
       return {
         auth,
         authenticated,
-        userProfile,
         profile: userProfile
       }
     },
     created: function() {
-      auth.getProfile();
+      auth.getProfile()
       console.log(userProfile)
       console.log(this.userProfile)
       console.log(auth.userProfile)
       console.log(this.auth.userProfile)
+      console.log(self.userProfile)
+      console.log(AuthService.userProfile)
+    },
+    mounted: function() {
+      auth.getProfile()
+      console.log(userProfile)
+      console.log(this.userProfile)
+      console.log(auth.userProfile)
+      console.log(this.auth.userProfile)
+      console.log(self.userProfile)
+      console.log(AuthService.userProfile)
     },
     methods: {
       login,

@@ -12,9 +12,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'vue': 'vue/dist/vue.js'
-    },
-    extensions: ['*', '.js', '.vue', '.json']
+      vue: 'vue/dist/vue.js'
+    }
   },
   module: {
     loaders: [{

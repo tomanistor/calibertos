@@ -6,15 +6,14 @@ export default class AuthService {
 
   authenticated = this.isAuthenticated()
   authNotifier = new EventEmitter()
-  userProfile
 
-  constructor() {
+  constructor(userProfile) {
     this.login = this.login.bind(this)
     this.setSession = this.setSession.bind(this)
     this.logout = this.logout.bind(this)
     this.isAuthenticated = this.isAuthenticated.bind(this)
-    this.userProfile
     this.getProfile = this.getProfile.bind(this)
+    this.userProfile
   }
 
   auth0 = new auth0.WebAuth({
@@ -34,7 +33,6 @@ export default class AuthService {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult)
-        this.getProfile()
 
         // this.auth0.client.userInfo(authResult.accessToken, function (err, profile) {
         //   localStorage.setItem('user_details', profile)
@@ -80,7 +78,7 @@ export default class AuthService {
     return new Date().getTime() < expiresAt
   }
 
-  getProfile() {
+  getProfile(userProfile) {
     if (!this.userProfile) {
       const accessToken = localStorage.getItem('access_token')
 
@@ -90,7 +88,7 @@ export default class AuthService {
 
       this.auth0.client.userInfo(accessToken, function(err, profile) {
         if (profile) {
-          self.userProfile = profile
+          userProfile = profile
         }
         console.log(userProfile)
         return userProfile
